@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "47zIE4WnlEBiClHvqj8PnwRQw0FSXMnZ8czjI1kJ0mElejHnH5pX+Ae7WAuC9TNH+DMWhfpbZne6vktHEE1Zbg==",
+  "success": true,
+  "projectFilePath": "D:\\Users\\Lenovo\\Document\\Visual Dtudio 2019\\Project\\CloudComputingProject\\DBGames\\DBGames.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.13\\microsoft.visualstudio.azure.containers.tools.targets.1.10.13.nupkg.sha512"
+  ],
+  "logs": []
+}

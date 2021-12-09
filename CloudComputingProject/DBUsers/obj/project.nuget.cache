@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "T1XEI/WScIDqS40hvAq+snX2YDq7u+Lhkhe7SlNPqh46uwwNrc6i6FI1kzibLPZ+0+Dpq/TAfosw5MOoSntkPQ==",
+  "success": true,
+  "projectFilePath": "D:\\Users\\Lenovo\\Document\\Visual Dtudio 2019\\Project\\CloudComputingProject\\DBUsers\\DBUsers.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.13\\microsoft.visualstudio.azure.containers.tools.targets.1.10.13.nupkg.sha512"
+  ],
+  "logs": []
+}
