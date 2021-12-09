@@ -1,0 +1,130 @@
+﻿@model List<AnalysisService.Models.vmCompareTowGame>
+@using Newtonsoft.Json;
+<script>
+    am4core.ready(function () {
+        let chart = am4core.createFromConfig({
+                "type": "XYChart3D",
+            "data": @Html.Raw(JsonConvert.SerializeObject(Model)),
+                "xAxes": [{
+                        "type": "CategoryAxis",
+                    "dataFields": {
+                            "category": "Platform"
+                    },
+                    "renderer": {
+                            "grid": {
+                                "template": {
+                                    "type": "Grid",
+                                "location": 0
+                                }
+                            },
+                        "minGridDistance": 30,
+                        "cellStartLocation": 0.2,
+                        "cellEndLocation": 0.8
+                    }
+                    }],
+                "yAxes": [{
+                        "type": "ValueAxis",
+                    "min": 0,
+                    "renderer": {
+                            "maxLabelPosition": 0.98
+                    }
+                    }],
+                "series": [{
+                    "type": "ColumnSeries3D",
+                    "name": "NA_Sales",
+                    "columns": {
+                            "template": {
+                                "type": "Column3D",
+                            "strokeOpacity": 0,
+                            "tooltipText": "{categoryX}\n{valueY}",
+                            "tooltipPosition": "pointer"
+                            }
+                        },
+                    "dataFields": {
+                            "valueY": "NA_Sales",
+                        "categoryX": "Platform"
+                    },
+                    "sequencedInterpolation": true,
+                    "sequencedInterpolationDelay": 100
+                }, {
+                        "type": "ColumnSeries3D",
+                        "name": "EU_Sales",
+                    "columns": {
+                            "template": {
+                                "type": "Column3D",
+                            "strokeOpacity": 0,
+                            "tooltipText": "{categoryX}\n{valueY}",
+                            "tooltipPosition": "pointer"
+                            }
+                        },
+                    "dataFields": {
+                            "valueY": "EU_Sales",
+                        "categoryX": "Platform"
+                    },
+                    "sequencedInterpolation": true,
+                    "sequencedInterpolationDelay": 100
+                },
+                {
+                    "type": "ColumnSeries3D",
+                    "name": "JP_Sales",
+                    "columns": {
+                            "template": {
+                                "type": "Column3D",
+                            "strokeOpacity": 0,
+                            "tooltipText": "{categoryX}\n{valueY}",
+                            "tooltipPosition": "pointer"
+                            }
+                        },
+                    "dataFields": {
+                            "valueY": "JP_Sales",
+                        "categoryX": "Platform"
+                    },
+                    "sequencedInterpolation": true,
+                    "sequencedInterpolationDelay": 100
+                },
+                {
+                    "type": "ColumnSeries3D",
+                    "name": "Other_Sales",
+                    "columns": {
+                            "template": {
+                                "type": "Column3D",
+                            "strokeOpacity": 0,
+                            "tooltipText": "{categoryX}\n{valueY}",
+                            "tooltipPosition": "pointer"
+                            }
+                        },
+                    "dataFields": {
+                            "valueY": "Other_Sales",
+                        "categoryX": "Platform"
+                    },
+                    "sequencedInterpolation": true,
+                    "sequencedInterpolationDelay": 100
+                },
+                {
+                    "type": "ColumnSeries3D",
+                    "name": "Global_Sales",
+                    "columns": {
+                            "template": {
+                                "type": "Column3D",
+                            "strokeOpacity": 0,
+                            "tooltipText": "{categoryX}\n{valueY}",
+                            "tooltipPosition": "pointer"
+                            }
+                        },
+                    "dataFields": {
+                            "valueY": "Global_Sales",
+                        "categoryX": "Platform"
+                    },
+                    "sequencedInterpolation": true,
+                    "sequencedInterpolationDelay": 100
+                }],
+            "legend": {
+                "type": "Legend",
+                "position": "right"
+            }
+            },
+            document.getElementById('chartdiv')
+        );
+    });
+</script>
+<div id="chartdiv" style="width:100%; height:500px;margin-top:150px"></div>

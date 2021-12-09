@@ -1,0 +1,54 @@
+services:
+  analysisservice:
+    build:
+      context: D:\Users\Lenovo\Document\Visual Dtudio 2019\Project\CloudComputingProject\CloudComputingProject
+      dockerfile: AnalysisService/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: analysisservice
+    ports:
+    - target: 80
+    - target: 443
+    volumes:
+    - C:\Users\Lenovo\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+  dbgames:
+    build:
+      context: D:\Users\Lenovo\Document\Visual Dtudio 2019\Project\CloudComputingProject\CloudComputingProject
+      dockerfile: DBGames/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: dbgames
+    ports:
+    - target: 80
+    - target: 443
+    volumes:
+    - C:\Users\Lenovo\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+  dbusers:
+    build:
+      context: D:\Users\Lenovo\Document\Visual Dtudio 2019\Project\CloudComputingProject\CloudComputingProject
+      dockerfile: DBUsers/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: dbusers
+    ports:
+    - target: 80
+    - target: 443
+    volumes:
+    - C:\Users\Lenovo\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+  mainservice:
+    build:
+      context: D:\Users\Lenovo\Document\Visual Dtudio 2019\Project\CloudComputingProject\CloudComputingProject
+      dockerfile: MainService/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: mainservice
+    ports:
+    - target: 80
+    - target: 443
+    volumes:
+    - C:\Users\Lenovo\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+version: '3.4'

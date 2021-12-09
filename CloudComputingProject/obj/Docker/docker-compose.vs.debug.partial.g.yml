@@ -1,0 +1,113 @@
+version: '3.4'
+
+services:
+  analysisservice:
+    image: analysisservice:dev
+    container_name: AnalysisService
+    build:
+      target: base
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "AnalysisService"
+    environment:
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
+      #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_analysisservice$
+    volumes:
+      - D:\Users\Lenovo\Document\Visual Dtudio 2019\Project\CloudComputingProject\CloudComputingProject\AnalysisService:/app
+      - D:\Users\Lenovo\Document\Visual Dtudio 2019\Project\CloudComputingProject\CloudComputingProject:/src
+      - C:\Users\Lenovo\vsdbg\vs2017u5:/remote_debugger:rw
+#$nuget_volume_mapping_analysisservice$
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+
+    entrypoint: tail -f /dev/null
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      #com.microsoft.visualstudio.debuggee.arguments: " $debuggee_arguments_probing_paths_analysisservice$ \"/app/bin/Debug/net5.0/AnalysisService.dll\""
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
+    tty: true
+  dbgames:
+    image: dbgames:dev
+    container_name: DBGames
+    build:
+      target: base
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "DBGames"
+    environment:
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
+      #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_dbgames$
+    volumes:
+      - D:\Users\Lenovo\Document\Visual Dtudio 2019\Project\CloudComputingProject\CloudComputingProject\DBGames:/app
+      - D:\Users\Lenovo\Document\Visual Dtudio 2019\Project\CloudComputingProject\CloudComputingProject:/src
+      - C:\Users\Lenovo\vsdbg\vs2017u5:/remote_debugger:rw
+#$nuget_volume_mapping_dbgames$
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+
+    entrypoint: tail -f /dev/null
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      #com.microsoft.visualstudio.debuggee.arguments: " $debuggee_arguments_probing_paths_dbgames$ \"/app/bin/Debug/net5.0/DBGames.dll\""
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
+    tty: true
+
+  dbusers:
+    image: dbusers:dev
+    container_name: DBUsers
+    build:
+      target: base
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "DBUsers"
+    environment:
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
+      #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_dbusers$
+    volumes:
+      - D:\Users\Lenovo\Document\Visual Dtudio 2019\Project\CloudComputingProject\CloudComputingProject\DBUsers:/app
+      - D:\Users\Lenovo\Document\Visual Dtudio 2019\Project\CloudComputingProject\CloudComputingProject:/src
+      - C:\Users\Lenovo\vsdbg\vs2017u5:/remote_debugger:rw
+#$nuget_volume_mapping_dbusers$
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+
+    entrypoint: tail -f /dev/null
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      #com.microsoft.visualstudio.debuggee.arguments: " $debuggee_arguments_probing_paths_dbusers$ \"/app/bin/Debug/net5.0/DBUsers.dll\""
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
+    tty: true
+
+  mainservice:
+    image: mainservice:dev
+    container_name: MainService
+    build:
+      target: base
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "MainService"
+    environment:
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
+      #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_mainservice$
+    volumes:
+      - D:\Users\Lenovo\Document\Visual Dtudio 2019\Project\CloudComputingProject\CloudComputingProject\MainService:/app
+      - D:\Users\Lenovo\Document\Visual Dtudio 2019\Project\CloudComputingProject\CloudComputingProject:/src
+      - C:\Users\Lenovo\vsdbg\vs2017u5:/remote_debugger:rw
+#$nuget_volume_mapping_mainservice$
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+
+    entrypoint: tail -f /dev/null
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      #com.microsoft.visualstudio.debuggee.arguments: " $debuggee_arguments_probing_paths_mainservice$ \"/app/bin/Debug/net5.0/MainService.dll\""
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
+    tty: true

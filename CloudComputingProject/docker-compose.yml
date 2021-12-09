@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  mainservice:
+    image: ${DOCKER_REGISTRY-}mainservice
+    build:
+      context: .
+      dockerfile: MainService/Dockerfile
+
+  dbusers:
+    image: ${DOCKER_REGISTRY-}dbusers
+    build:
+      context: .
+      dockerfile: DBUsers/Dockerfile
+
+
+  dbgames:
+    image: ${DOCKER_REGISTRY-}dbgames
+    build:
+      context: .
+      dockerfile: DBGames/Dockerfile
+
+
+  analysisservice:
+    image: ${DOCKER_REGISTRY-}analysisservice
+    build:
+      context: .
+      dockerfile: AnalysisService/Dockerfile
+

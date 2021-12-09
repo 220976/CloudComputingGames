@@ -1,0 +1,78 @@
+﻿@model List<AnalysisService.Models.vmCompareSalesTowPublisherInTowYear>
+@using Newtonsoft.Json;
+<script>
+    am4core.ready(function () {
+        let chart = am4core.createFromConfig({
+            "type": "XYChart",
+            "data": @Html.Raw(JsonConvert.SerializeObject(Model)),
+            "xAxes": [{
+                "type": "CategoryAxis",
+                "dataFields": {
+                    "category": "Year"
+                },
+                "renderer": {
+                    "grid": {
+                        "template": {
+                            "type": "Grid",
+                            "location": 0
+                        }
+                    },
+                    "minGridDistance": 20
+                }
+            }],
+            "yAxes": [{
+                "type": "ValueAxis",
+                "renderer": {
+                    "maxLabelPosition": 0.98
+                }
+            }],
+            "series": [{
+                "type": "LineSeries",
+                "name": "Series 1",
+                "bullets": {
+                    "values": [{
+                        "type": "CircleBullet",
+                        "tooltipText": "{name}\n{categoryX}: {valueY}"
+                    }],
+                    "template": {
+                        "type": "Bullet"
+                    }
+                },
+                "dataFields": {
+                    "valueY": "SellPublisher1",
+                    "categoryX": "Year"
+                },
+                "sequencedInterpolation": true,
+                "sequencedInterpolationDelay": 100
+            }, {
+                "type": "LineSeries",
+                "name": "Series 2",
+                "bullets": {
+                    "values": [{
+                        "type": "Bullet",
+                        "children": [{
+                            "type": "Rectangle",
+                            "width": 10,
+                            "height": 10,
+                            "horizontalCenter": "middle",
+                            "verticalCenter": "middle"
+                        }],
+                        "tooltipText": "{name}\n{categoryX}: {valueY}"
+                    }],
+                    "template": {
+                        "type": "Bullet"
+                    }
+                },
+                "dataFields": {
+                    "valueY": "SellPublisher2",
+                    "categoryX": "Year"
+                },
+                "sequencedInterpolation": true,
+                "sequencedInterpolationDelay": 100
+            }]
+        },
+            document.getElementById('chartdiv')
+        );
+    });
+</script>
+<div id='chartdiv' style='width:100%; height:500px;margin-top:150px'></div>
