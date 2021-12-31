@@ -1,0 +1,66 @@
+version: '3.4'
+services:
+  mainservice:
+    image: ${DOCKER_REGISTRY-}mainservice
+    build:
+      context: .
+      dockerfile: MainService/Dockerfile
+        deploy:
+          placement:
+             constraint:[node.role==manager]
+          environment:
+           - ASPNETCORE_ENVIRONMENT=Development
+           - ASPNETCORE_URLS=https://+:443;http://+:80
+          ports:
+            - "80"
+            - "443"
+            volumes:
+             - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+  dbusers:
+    image: ${DOCKER_REGISTRY-}dbusers
+    build:
+      context: .
+      dockerfile: DBUsers/Dockerfile
+         deploy:
+          placement:
+              replicas:2
+         environment:
+           - ASPNETCORE_ENVIRONMENT=Development
+           - ASPNETCORE_URLS=https://+:443;http://+:80
+          ports:
+           - "80"
+           - "443"
+          volumes:
+             - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+  dbgames:
+    image: ${DOCKER_REGISTRY-}dbgames
+    build:
+      context: .
+      dockerfile: DBGames/Dockerfile
+      deploy:
+        placement:
+              replicas:2
+        environment:
+           - ASPNETCORE_ENVIRONMENT=Development
+           - ASPNETCORE_URLS=https://+:443;http://+:80
+              ports:
+               - "80"
+               - "443"
+          volumes:
+           - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+  analysisservice:
+    image: ${DOCKER_REGISTRY-}analysisservice
+    build:
+      context:
+      dockerfile: AnalysisService/Dockerfile
+        deploy:
+          placement:
+             constraint:[node.role==manager]
+          environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+            - ASPNETCORE_URLS=https://+:443;http://+:80
+          ports:
+            - "80"
+            - "443"
+          volumes:
+            - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
